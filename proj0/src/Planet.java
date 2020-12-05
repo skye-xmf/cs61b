@@ -47,7 +47,7 @@ public class Planet {
         return Fy;
     }
 
-    public double calcNetForceExertedByx(Planet[] allPlanets){
+    public double calcNetForceExertedByX(Planet[] allPlanets){
         double netFx = 0;
         int i = 0;
         while (i < allPlanets.length){
