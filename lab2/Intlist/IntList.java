@@ -111,8 +111,10 @@ public class IntList {
     public static  void main(String[] args){
         IntList a = IntList.of(1, 2, 3);
         IntList b = IntList.of(4, 5, 6);
+        IntList c = IntList.of(2, 3, 4);
+        IntList d = IntList.of(5, 6, 7);
         System.out.println(dcatenate(a, b));
-        System.out.println(catenate(a, b));
+        System.out.println(catenate(c, d));
     }
 
 
