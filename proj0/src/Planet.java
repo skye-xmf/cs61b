@@ -26,24 +26,24 @@ public class Planet {
     }
 
     public double calcDistance(Planet p){
-        double dx = xxPos - p.xxPos;
-        double dy = yyPos - p.yyPos;
+        double dx = this.xxPos - p.xxPos;
+        double dy = this.yyPos - p.yyPos;
         double dis = Math.sqrt(dx * dx + dy * dy);
         return dis;
     }
 
     public double calcForceExertedBy(Planet p){
-        double F = G * mass * p.mass / (calcDistance(p) * calcDistance(p));
+        double F = G * this.mass * p.mass / (calcDistance(p) * calcDistance(p));
         return F;
     }
 
     public double calcForceExertedByX(Planet p){
-        double Fx = calcForceExertedBy(p) * (p.xxPos - xxPos) / calcDistance(p);
+        double Fx = this.calcForceExertedBy(p) * (p.xxPos - this.xxPos) / calcDistance(p);
         return Fx;
     }
 
     public double calcForceExertedByY(Planet p){
-        double Fy = calcForceExertedBy(p) * (p.yyPos - yyPos) / calcDistance(p);
+        double Fy = this.calcForceExertedBy(p) * (p.yyPos - this.yyPos) / calcDistance(p);
         return Fy;
     }
 
@@ -52,7 +52,7 @@ public class Planet {
         int i = 0;
         while (i < allPlanets.length){
             if (!this.equals(allPlanets[i])) {
-                netFx += calcForceExertedByX(allPlanets[i]);
+                netFx += this.calcForceExertedByX(allPlanets[i]);
             }
             i = i + 1;
         }
@@ -64,7 +64,7 @@ public class Planet {
         int i = 0;
         while (i < allPlanets.length){
             if (!this.equals(allPlanets[i])) {
-                netFy += calcForceExertedByY(allPlanets[i]);
+                netFy += this.calcForceExertedByY(allPlanets[i]);
             }
             i = i + 1;
         }
