@@ -36,5 +36,15 @@ public class Planet {
         double F = G * mass * p.mass / (calcDistance(p) * calcDistance(p));
         return F;
     }
+
+    public double calcForceExertedByX(Planet p){
+        double Fx = calcForceExertedBy(p) * (p.xxPos - xxPos) / calcDistance(p);
+        return Fx;
+    }
+
+    public double calcForceExertedByY(Planet p){
+        double Fy = calcForceExertedBy(p) * (p.xxPos - xxPos) / calcDistance(p);
+        return Fy;
+    }
 }
 
