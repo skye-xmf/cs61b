@@ -46,5 +46,25 @@ public class Planet {
         double Fy = calcForceExertedBy(p) * (p.yyPos - yyPos) / calcDistance(p);
         return Fy;
     }
+
+    public double calcNetForceExertedByx(Planet[] allPlanets){
+        double netFx = 0;
+        for (int i =0; i < allPlanets.length; i++){
+            while (this != allPlanets[i]){
+                netFx += calcForceExertedByX(allPlanets[i]);
+            }
+        }
+        return netFx;
+    }
+
+    public double calcNetForceExertedByY(Planet[] allPlanets){
+        double netFy = 0;
+        for (int i =0; i < allPlanets.length; i++){
+            while (this != allPlanets[i]){
+                netFy += calcForceExertedByY(allPlanets[i]);
+            }
+        }
+        return netFy;
+    }
 }
 
