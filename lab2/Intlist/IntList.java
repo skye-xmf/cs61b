@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Formatter;
 
 /**
@@ -81,20 +82,40 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        if (A == null & B == null){
+        if (A == null){
             return null;
-        }else{
-            IntList p =
         }
+        IntList p = A;
+        while (A.rest != null){
+            A = A.rest;
+        }
+        A.rest = B;
+        return p;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
-    public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+    public static IntList catenate(IntList A, IntList B){
+        if (A == null) {
+            return null;
+        }
+        IntList q = new IntList(A.first, A.rest);
+        IntList r = q;
+        while (A.rest != null){
+            A = A.rest;
+            r.rest = new IntList(A.first, A.rest);
+            r = r.rest;
+        }
+        r = B;
+        return q;
+    }
+    public static  void main(String[] args){
+        IntList a = IntList.of(1, 2, 3);
+        IntList b = IntList.of(4, 5, 6);
+        System.out.println(dcatenate(a, b));
+        System.out.println(catenate(a, b));
     }
 
 
