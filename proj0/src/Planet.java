@@ -49,20 +49,24 @@ public class Planet {
 
     public double calcNetForceExertedByx(Planet[] allPlanets){
         double netFx = 0;
-        for (int i =0; i < allPlanets.length; i = i +1){
-            while (this != allPlanets[i]){
+        int i = 0;
+        while (i < allPlanets.length){
+            if (!this.equals(allPlanets[i])) {
                 netFx += calcForceExertedByX(allPlanets[i]);
             }
+            i = i + 1;
         }
         return netFx;
     }
 
     public double calcNetForceExertedByY(Planet[] allPlanets){
         double netFy = 0;
-        for (int i =0; i < allPlanets.length; i = i + 1){
-            while (this != allPlanets[i]){
+        int i = 0;
+        while (i < allPlanets.length){
+            if (!this.equals(allPlanets[i])) {
                 netFy += calcForceExertedByY(allPlanets[i]);
             }
+            i = i + 1;
         }
         return netFy;
     }
