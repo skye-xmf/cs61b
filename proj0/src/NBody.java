@@ -1,20 +1,20 @@
 public class NBody {
     public static double readRadius(String filename){
         In in = new In(filename);
-        double number = in.readDouble();
+        int number = in.readInt();
         double Radius = in.readDouble();
         return Radius;
     }
 
-    public static String[] readPlanets(String filename){
+    public static Planet[] readPlanets(String filename){
         In in = new In(filename);
-        String[] name = new String[5];
-        int i = 0;
-        while (i < 4){
-            String planet = in.readString();
-            name[i] = planet;
-            i = i + 1;
+        int number = in.readInt();
+        double Radius = in.readDouble();
+        Planet[] planets = new Planet[number];
+        for (int i = 0; i < 5; i ++){
+            planets[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(),
+                    in.readDouble(), in.readDouble(), in.readString());
         }
-        return name;
+        return planets;
     }
 }
