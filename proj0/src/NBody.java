@@ -22,7 +22,7 @@ public class NBody {
         double T = Double.parseDouble(args[0]);
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
-        Double Radius = readRadius(filename);
+        Double radius = readRadius(filename);
         Planet[] planets = readPlanets(filename);
 
         double t = 0;
@@ -42,7 +42,7 @@ public class NBody {
             }
 
             /** set up the scale of the universe. */
-            StdDraw.setScale(-Radius, Radius);
+            StdDraw.setScale(-radius, radius);
 
             /** clear the draw window. */
             StdDraw.clear();
@@ -61,6 +61,13 @@ public class NBody {
                 t += dt;
 
             }
+        }
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", radius);
+        for (int i = 0; i < planets.length; i++) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                    planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+                    planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
         }
     }
 }
