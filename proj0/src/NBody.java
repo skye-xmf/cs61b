@@ -38,5 +38,11 @@ public class NBody {
         /** show the picture to the screen, and wait 2000 milliseconds. */
         StdDraw.show();
         StdDraw.pause(2000);
+
+        for (Planet p : planets){
+            p.draw();
+            StdDraw.show();
+            StdDraw.pause(100);
+        }
     }
 }
