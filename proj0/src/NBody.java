@@ -30,7 +30,7 @@ public class NBody {
 
     public static void drawbackground(){
         /** set up the scale of the universe. */
-        In in = new In("./src/planet.txt");
+        In in = new In("src/planet.txt");
         int number = in.readInt();
         Double Radius = in.readDouble();
         StdDraw.setScale(-Radius, Radius);
@@ -39,7 +39,7 @@ public class NBody {
         StdDraw.clear();
 
         /** the location of the picture. */
-        StdDraw.picture(0, 0, "./images/starfield.jpg");
+        StdDraw.picture(0, 0, "images/starfield.jpg");
 
         /** show the picture to the screen, and wait 2000 milliseconds. */
         StdDraw.show();
