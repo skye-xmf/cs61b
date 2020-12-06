@@ -11,7 +11,7 @@ public class NBody {
         int number = in.readInt();
         double Radius = in.readDouble();
         Planet[] planets = new Planet[number];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < number; i++) {
             planets[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(),
                     in.readDouble(), in.readDouble(), in.readString());
         }
@@ -32,6 +32,9 @@ public class NBody {
 
         StdDraw.enableDoubleBuffering();
 
+        /** set up the scale of the universe. */
+        StdDraw.setScale(-radius, radius);
+
         while (t <= T) {
             for (int i = 0; i < planets.length; i++) {
                 xForces[i] = planets[i].calcNetForceExertedByX(planets);
@@ -40,9 +43,6 @@ public class NBody {
             for (int i = 0; i < planets.length; i++) {
                 planets[i].update(dt, xForces[i], yForces[i]);
             }
-
-            /** set up the scale of the universe. */
-            StdDraw.setScale(-radius, radius);
 
             /** clear the draw window. */
             StdDraw.clear();

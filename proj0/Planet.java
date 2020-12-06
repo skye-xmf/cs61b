@@ -5,7 +5,7 @@ public class Planet {
     public double yyVel;
     public double mass;
     public String imgFileName;
-    public static double G = 6.67e-11;
+    static final double G = 6.67e-11;
 
     public Planet(double xP, double yP, double xV, double yV, double m, String img){
         xxPos = xP;
@@ -38,12 +38,12 @@ public class Planet {
     }
 
     public double calcForceExertedByX(Planet p){
-        double Fx = this.calcForceExertedBy(p) * (p.xxPos - this.xxPos) / calcDistance(p);
+        double Fx = calcForceExertedBy(p) * (p.xxPos - this.xxPos) / calcDistance(p);
         return Fx;
     }
 
     public double calcForceExertedByY(Planet p){
-        double Fy = this.calcForceExertedBy(p) * (p.yyPos - this.yyPos) / calcDistance(p);
+        double Fy = calcForceExertedBy(p) * (p.yyPos - this.yyPos) / calcDistance(p);
         return Fy;
     }
 
@@ -52,7 +52,7 @@ public class Planet {
         int i = 0;
         while (i < allPlanets.length){
             if (!this.equals(allPlanets[i])) {
-                netFx += this.calcForceExertedByX(allPlanets[i]);
+                netFx += calcForceExertedByX(allPlanets[i]);
             }
             i = i + 1;
         }
@@ -64,7 +64,7 @@ public class Planet {
         int i = 0;
         while (i < allPlanets.length){
             if (!this.equals(allPlanets[i])) {
-                netFy += this.calcForceExertedByY(allPlanets[i]);
+                netFy += calcForceExertedByY(allPlanets[i]);
             }
             i = i + 1;
         }
@@ -72,10 +72,10 @@ public class Planet {
     }
 
     public void update(double dt, double fX, double fY){
-        this.xxVel = this.xxVel + dt * fX / this.mass;
-        this.yyVel = this.yyVel + dt * fY / this.mass;
-        this.xxPos = this.xxPos + dt * this.xxVel;
-        this.yyPos = this.yyPos + dt * this.yyVel;
+        xxVel = xxVel + dt * fX / mass;
+        yyVel = yyVel + dt * fY / mass;
+        xxPos = xxPos + dt * xxVel;
+        yyPos = yyPos + dt * yyVel;
     }
 
     public void draw(){
